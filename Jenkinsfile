@@ -36,14 +36,14 @@ pipeline {
         success {
             echo 'This will run only if successful'
             mail to: 'team@example.com',
-             subject: "Success Pipeline: ${currentBuild.fullDisplayName}",
-             body: "Everything looks good."
+                 subject: "Success Pipeline: ${currentBuild.fullDisplayName}",
+                 body: "Everything looks good."
         }
         failure {
             echo 'This will run only if failed'
             mail to: 'wejie00@foxmail.com',
-             subject: "Failed Pipeline: ${currentBuild.fullDisplayName}",
-             body: "Something is wrong with ${env.BUILD_URL}"
+                 subject: "Failed Pipeline: ${currentBuild.fullDisplayName}",
+                 body: "Something is wrong with ${env.BUILD_URL}"
         }
         unstable {
             echo 'This will run only if the run was marked as unstable'
