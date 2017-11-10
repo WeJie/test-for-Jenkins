@@ -18,20 +18,17 @@ pipeline {
         }
         stage('Deploy') {
             steps {
-                # 任务会重试 3 次
                 retry(3) {
-                    sh './flakey-deploy.sh'
+                    sh 'ls'
                 }
 
-                # 运行超过 3 分钟就退出任务
                 timeout(time: 3, unit: 'MINUTES') {
-                    sh './health-check.sh'
+                    sh 'pwd'
                 }
             }
         }
     }
 
-    # Jenkins 运行结束时 执行 post
     post {
         always {
             echo 'This will always run'
