@@ -16,6 +16,11 @@ pipeline {
                 sh 'echo "Fail!"'
             }
         }
+        stage('Sanity check') {
+            steps {
+                input "Does the staging environment look ok?"
+            }
+        }
         stage('Deploy') {
             steps {
                 retry(3) {
